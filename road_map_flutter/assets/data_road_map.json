@@ -1,0 +1,392 @@
+[
+    {
+        "title": "Basics",
+        "steps": [
+            {
+                "title": "Dev Environment",
+                "list_topics": [
+                    {
+                        "content": "Android Studio or Visual Code",
+                        "level": 1
+                    },
+                    {
+                        "content": "Flutter CLI",
+                        "level": 3
+                    },
+                    {
+                        "content": "DartPad",
+                        "level": 3
+                    },
+                    {
+                        "content": "Git",
+                        "level": 2
+                    }
+                ]
+            },
+            {
+                "title": "Language",
+                "list_topics": [
+                    {
+                        "content": "Dart",
+                        "level": 1
+                    },
+                    {
+                        "content": "Code Style",
+                        "level": 3
+                    },
+                    {
+                        "content": "OOP",
+                        "level": 2
+                    },
+                    {
+                        "content": "Functional",
+                        "level": 2
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "title": "Flutter",
+        "steps": [
+            {
+                "title": "Basic Widgets",
+                "list_topics": [
+                    {
+                        "content": "Material Widgets",
+                        "level": 1
+                    },
+                    {
+                        "content": "Material Design",
+                        "level": 1
+                    },
+                    {
+                        "content": "Cupertino Design",
+                        "level": 2
+                    },
+                    {
+                        "content": "Mobile HIG",
+                        "level": 3
+                    }
+                ]
+            },
+            {
+                "title": "Core Design Patterns",
+                "list_topics": [
+                    {
+                        "content": "Observer",
+                        "level": 1
+                    },
+                    {
+                        "content": "Command",
+                        "level": 1
+                    },
+                    {
+                        "content": "Factory",
+                        "level": 1
+                    },
+                    {
+                        "content": "Dependency Injection",
+                        "level": 1
+                    },
+                    {
+                        "content": "Builder",
+                        "level": 1
+                    },
+                    {
+                        "content": "State",
+                        "level": 1
+                    },
+                    {
+                        "content": "Decorator",
+                        "level": 1
+                    },
+                    {
+                        "content": "Composite",
+                        "level": 1
+                    }
+                ]
+            },
+            {
+                "title": "Core Design Principles",
+                "list_topics": [
+                    {
+                        "content": "KISS",
+                        "level": 1
+                    },
+                    {
+                        "content": "Dry",
+                        "level": 1
+                    },
+                    {
+                        "content": "SOLID",
+                        "level": 2
+                    }
+                ]
+            },
+            {
+                "title": "Networking",
+                "list_topics": [
+                    {
+                        "content": "RESTfull API",
+                        "level": 1
+                    },
+                    {
+                        "content": "TCP/IP Sockets",
+                        "level": 3
+                    },
+                    {
+                        "content": "JSON",
+                        "level": 1
+                    },
+                    {
+                        "content": "GraphQL",
+                        "level": 3
+                    }
+                ]
+            },
+            {
+                "title": "Simple Persistence",
+                "list_topics": [
+                    {
+                        "content": "Serializers",
+                        "level": 1
+                    },
+                    {
+                        "content": "Local storage",
+                        "level": 1
+                    },
+                    {
+                        "content": "Keychain",
+                        "level": 3
+                    },
+                    {
+                        "content": "Keystore",
+                        "level": 3
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "title": "Getting Deeper",
+        "steps": [
+            {
+                "title": "Database",
+                "list_topics": [
+                    {
+                        "content": "Hive",
+                        "level": 1
+                    },
+                    {
+                        "content": "SQLite",
+                        "level": 3
+                    },
+                    {
+                        "content": "Firebase",
+                        "level": 1
+                    },
+                    {
+                        "content": "iCloud",
+                        "level": 3
+                    }
+                ]
+            },
+            {
+                "title": "Architecture Patterns",
+                "list_topics": [
+                    {
+                        "content": "Uni-directional data flow",
+                        "level": 1
+                    },
+                    {
+                        "content": "MVVM",
+                        "level": 1
+                    },
+                    {
+                        "content": "MVC",
+                        "level": 1
+                    },
+                    {
+                        "content": "Lifting State",
+                        "level": 1
+                    }
+                ]
+            },
+            {
+                "title": "Testing",
+                "list_topics": [
+                    {
+                        "content": "TDD",
+                        "level": 1
+                    },
+                    {
+                        "content": "BDD",
+                        "level": 2
+                    }
+                ]
+            },
+            {
+                "title": "Languages",
+                "list_topics": [
+                    {
+                        "content": "Swift",
+                        "level": 3
+                    },
+                    {
+                        "content": "Kotlin",
+                        "level": 3
+                    }
+                ]
+            },
+            {
+                "title": "Advanced Dart",
+                "list_topics": [
+                    {
+                        "content": "Concurrent",
+                        "level": 1
+                    },
+                    {
+                        "content": "Reactive",
+                        "level": 1
+                    },
+                    {
+                        "content": "Functional",
+                        "level": 1
+                    }
+                ]
+            },
+            {
+                "title": "Package Manager",
+                "list_topics": [
+                    {
+                        "content": "Pub",
+                        "level": 1
+                    },
+                    {
+                        "content": "Popular Plugins",
+                        "level": 1
+                    },
+                    {
+                        "content": "Gradle",
+                        "level": 3
+                    },
+                    {
+                        "content": "CocoaPods",
+                        "level": 3
+                    }
+                ]
+            },
+            {
+                "title": "Profiling",
+                "list_topics": [
+                    {
+                        "content": "Leaks",
+                        "level": 1
+                    },
+                    {
+                        "content": "Allocations",
+                        "level": 2
+                    },
+                    {
+                        "content": "Performance",
+                        "level": 2
+                    },
+                    {
+                        "content": "Widgets",
+                        "level": 2
+                    }
+                ]
+            },
+            {
+                "title": "Flutter Internals",
+                "list_topics": [
+                    {
+                        "content": "Framework Architecture",
+                        "level": 2
+                    },
+                    {
+                        "content": "Dart VM",
+                        "level": 3
+                    },
+                    {
+                        "content": "RenderObjects",
+                        "level": 3
+                    },
+                    {
+                        "content": "layouts",
+                        "level": 3
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "title": "Almost there",
+        "steps": [
+            {
+                "title": "Continuous Integration",
+                "list_topics": [
+                    {
+                        "content": "CI server",
+                        "level": 1
+                    },
+                    {
+                        "content": "FastLane",
+                        "level": 1
+                    },
+                    {
+                        "content": "Test Builds Distribution",
+                        "level": 1
+                    },
+                    {
+                        "content": "Code metrics",
+                        "level": 3
+                    }
+                ]
+            },
+            {
+                "title": "Analytics",
+                "list_topics": [
+                    {
+                        "content": "User Behavior Analytics",
+                        "level": 1
+                    },
+                    {
+                        "content": "Crash Logging",
+                        "level": 1
+                    },
+                    {
+                        "content": "A/B Testing",
+                        "level": 3
+                    }
+                ]
+            },
+            {
+                "title": "Store",
+                "list_topics": [
+                    {
+                        "content": "AppStore Guidelines",
+                        "level": 1
+                    },
+                    {
+                        "content": "Google Play Guidelines",
+                        "level": 1
+                    },
+                    {
+                        "content": "App Store Connect",
+                        "level": 1
+                    },
+                    {
+                        "content": "Google Dev Console",
+                        "level": 1
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "title": "The End",
+        "steps": []
+    }
+]
