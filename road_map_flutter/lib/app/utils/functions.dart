@@ -1,9 +1,8 @@
 // ignore_for_file: non_constant_identifier_names, constant_identifier_names
 import 'package:flutter/material.dart';
-import 'package:road_map_flutter/utils/constants.dart';
+import 'package:road_map_flutter/app/UIData/app_content.dart';
 
 //* To return different height for different widgets
-
 double getMinHeight(int index) {
   switch (index % 4) {
     case 0:
@@ -18,6 +17,8 @@ double getMinHeight(int index) {
       return 50;
   }
 }
+
+
 
 List<Step> NoDataUI() {
   return [

@@ -22,3 +22,4 @@ const MUST_HAVE = "Must have";
 const NICE_HAVE = "Nice to have";
 const OPTION = "Optional";
 const LEGEND = 'Legends';
+const MESS_NO_DATA = 'Don\'t have data!';

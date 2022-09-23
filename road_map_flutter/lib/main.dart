@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:road_map_flutter/road_map/res/app_content.dart';
-import 'package:road_map_flutter/road_map/views/road_map_screen.dart';
+import 'package:road_map_flutter/app/UIData/app_content.dart';
+import 'package:road_map_flutter/app/pages/road_map/road_map_screen.dart';
 
 void main() {
   runApp(const MyApp());

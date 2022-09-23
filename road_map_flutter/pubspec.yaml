@@ -62,6 +62,7 @@ flutter:
     - assets/data_road_map.json
     - assets/animations/questions_mark.json
     - assets/animations/spinner.json
+    - assets/animations/signup.json
     - assets/logos/facebook.jpg
     - assets/logos/google.jpg
 

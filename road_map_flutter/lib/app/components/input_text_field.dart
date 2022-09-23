@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:road_map_flutter/road_map/res/app_content.dart';
-import 'package:road_map_flutter/road_map/res/style.dart';
+import 'package:road_map_flutter/app/UIData/app_content.dart';
+import 'package:road_map_flutter/app/UIData/style.dart';
 
 class InputTextField extends StatelessWidget {
   final bool isEmail;

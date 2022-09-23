@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:lottie/lottie.dart';
-import 'package:road_map_flutter/components/alert_dialog.dart';
-import 'package:road_map_flutter/components/list_steps.dart';
-import 'package:road_map_flutter/login_screen.dart';
-import 'package:road_map_flutter/road_map/models/road_map.dart';
-import 'package:road_map_flutter/road_map/res/app_content.dart';
-import 'package:road_map_flutter/road_map/res/colors.dart';
-import 'package:road_map_flutter/utils/constants.dart';
+import 'package:road_map_flutter/app/components/alert_dialog.dart';
+import 'package:road_map_flutter/app/components/list_steps.dart';
+import 'package:road_map_flutter/app/pages/login/login_screen.dart';
+import 'package:road_map_flutter/app/UIData/app_content.dart';
+import 'package:road_map_flutter/app/UIData/colors.dart';
+import 'package:road_map_flutter/data/models/road_map.dart';
+import 'package:road_map_flutter/app/UIData/images_animations.dart';
 
 class RoadMapScreen extends StatefulWidget {
   const RoadMapScreen({super.key});
@@ -35,6 +35,7 @@ class _RoadMapScreenState extends State<RoadMapScreen> {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 80,
+        backgroundColor: lightBlueColorF6,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
             bottom: Radius.circular(16),

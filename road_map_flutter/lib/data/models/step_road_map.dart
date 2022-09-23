@@ -1,4 +1,4 @@
-import 'package:road_map_flutter/road_map/models/topics.dart';
+import 'package:road_map_flutter/data/models/topics.dart';
 
 class StepRoadMap {
   String title;

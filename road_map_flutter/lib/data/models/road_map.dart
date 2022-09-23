@@ -2,7 +2,7 @@
 //
 //     final roadMap = roadMapFromJson(jsonString);
 
-import 'package:road_map_flutter/road_map/models/step_road_map.dart';
+import 'package:road_map_flutter/data/models/step_road_map.dart';
 import 'dart:convert';
 
 List<RoadMap> roadMapFromJson(String str) =>

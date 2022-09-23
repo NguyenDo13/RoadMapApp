@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:road_map_flutter/components/list_box.dart';
-import 'package:road_map_flutter/road_map/models/road_map.dart';
-import 'package:road_map_flutter/road_map/res/colors.dart';
-import 'package:road_map_flutter/utils/functions_utils.dart';
+import 'package:road_map_flutter/app/components/list_box.dart';
+import 'package:road_map_flutter/app/UIData/colors.dart';
+import 'package:road_map_flutter/data/models/road_map.dart';
+import 'package:road_map_flutter/app/utils/functions.dart';
 
 List<Step> buildSteps(List<RoadMap> roadMap) {
   List<Step> listSteps = [];

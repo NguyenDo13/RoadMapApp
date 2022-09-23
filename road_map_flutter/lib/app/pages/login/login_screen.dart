@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:road_map_flutter/components/button_round_white.dart';
-import 'package:road_map_flutter/components/input_text_field.dart';
-import 'package:road_map_flutter/road_map/res/app_content.dart';
-import 'package:road_map_flutter/road_map/res/colors.dart';
-import 'package:road_map_flutter/road_map/res/style.dart';
-import 'package:road_map_flutter/sign_up_screen.dart';
-import 'package:road_map_flutter/utils/constants.dart';
+import 'package:road_map_flutter/app/components/button_round_white.dart';
+import 'package:road_map_flutter/app/components/input_text_field.dart';
+import 'package:road_map_flutter/app/UIData/app_content.dart';
+import 'package:road_map_flutter/app/UIData/colors.dart';
+import 'package:road_map_flutter/app/UIData/style.dart';
+import 'package:road_map_flutter/app/pages/signup/sign_up_screen.dart';
+import 'package:road_map_flutter/app/UIData/images_animations.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -96,7 +96,7 @@ class _LoginScreenState extends State<LoginScreen> {
             data: ThemeData(unselectedWidgetColor: Colors.white),
             child: Checkbox(
               value: _rememberMe,
-              checkColor: lightBlueColor,
+              checkColor: lightBlueColorF6,
               activeColor: Colors.white,
               onChanged: (value) {
                 setState(() {
