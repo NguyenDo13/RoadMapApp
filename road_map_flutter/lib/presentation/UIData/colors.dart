@@ -7,6 +7,6 @@ final listColors = [
 ];
 
 const lightBlueColorF6 = Color(0xFF6CA8F1);
-final lightBlueColor100 = Colors.lightBlue.shade100;
 const lightBlueColorF7 = Color(0xFF73AEF5);
+final lightBlueColor100 = Colors.lightBlue.shade100;
 const lightRedColor = Color.fromARGB(255, 248, 153, 147);

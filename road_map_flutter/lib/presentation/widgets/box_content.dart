@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:road_map_flutter/app/UIData/colors.dart';
-import 'package:road_map_flutter/app/utils/functions.dart';
+import 'package:road_map_flutter/presentation/UIData/colors.dart';
+import 'package:road_map_flutter/presentation/utils/functions.dart';
 
 class BoxContent extends StatefulWidget {
   final String content;

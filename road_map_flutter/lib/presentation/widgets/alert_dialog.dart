@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:road_map_flutter/app/components/box_content.dart';
-import 'package:road_map_flutter/app/UIData/app_content.dart';
+import 'package:road_map_flutter/presentation/widgets/box_content.dart';
+import 'package:road_map_flutter/presentation/UIData/app_content.dart';
 
 class AlertDialogExtend extends StatelessWidget {
   const AlertDialogExtend({super.key});

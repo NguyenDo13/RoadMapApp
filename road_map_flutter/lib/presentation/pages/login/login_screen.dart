@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:road_map_flutter/app/components/button_round_white.dart';
-import 'package:road_map_flutter/app/components/input_text_field.dart';
-import 'package:road_map_flutter/app/UIData/app_content.dart';
-import 'package:road_map_flutter/app/UIData/colors.dart';
-import 'package:road_map_flutter/app/UIData/style.dart';
-import 'package:road_map_flutter/app/pages/signup/sign_up_screen.dart';
-import 'package:road_map_flutter/app/UIData/images_animations.dart';
+import 'package:road_map_flutter/presentation/widgets/button_round_white.dart';
+import 'package:road_map_flutter/presentation/widgets/input_text_field.dart';
+import 'package:road_map_flutter/presentation/UIData/app_content.dart';
+import 'package:road_map_flutter/presentation/UIData/colors.dart';
+import 'package:road_map_flutter/presentation/UIData/style.dart';
+import 'package:road_map_flutter/presentation/pages/signup/sign_up_screen.dart';
+import 'package:road_map_flutter/presentation/UIData/images_animations.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

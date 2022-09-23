@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:road_map_flutter/app/components/box_content.dart';
+import 'package:road_map_flutter/presentation/widgets/box_content.dart';
 import 'package:road_map_flutter/data/models/topics.dart';
 
 class ListBox extends StatelessWidget {

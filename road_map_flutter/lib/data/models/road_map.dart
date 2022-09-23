@@ -5,11 +5,15 @@
 import 'package:road_map_flutter/data/models/step_road_map.dart';
 import 'dart:convert';
 
-List<RoadMap> roadMapFromJson(String str) =>
-    List<RoadMap>.from(json.decode(str).map((x) => RoadMap.fromJson(x)));
+List<RoadMap> roadMapFromJson(String str) => List<RoadMap>.from(
+      json.decode(str).map((x) => RoadMap.fromJson(x)),
+    );
 
-String roadMapToJson(List<RoadMap> data) =>
-    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String roadMapToJson(List<RoadMap> data) => json.encode(
+      List<dynamic>.from(
+        data.map((x) => x.toJson()),
+      ),
+    );
 
 class RoadMap {
   RoadMap({
