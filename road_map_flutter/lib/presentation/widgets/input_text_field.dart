@@ -2,34 +2,56 @@ import 'package:flutter/material.dart';
 import 'package:road_map_flutter/presentation/UIData/app_content.dart';
 import 'package:road_map_flutter/presentation/UIData/style.dart';
 
-class InputTextField extends StatelessWidget {
+class InputTextField extends StatefulWidget {
+  final Function(String)? onSubmitted;
+  final Function(String) onChanged;
   final bool isEmail;
   final bool isPassword;
+
   const InputTextField({
-    super.key,
+    Key? key,
     this.isEmail = false,
     this.isPassword = false,
-  });
+    this.onSubmitted,
+    required this.onChanged,
+  }) : super(key: key);
+
+  @override
+  State<InputTextField> createState() => _InputTextFieldState();
+}
+
+class _InputTextFieldState extends State<InputTextField> {
+  late final TextEditingController controller;
+  late String _textTitle;
+  late String _hintText;
+  late Icon _iconField;
+
+  @override
+  void initState() {
+    _iconField = const Icon(Icons.error);
+    if (widget.isEmail) {
+      _textTitle = EMAIL;
+      _iconField = const Icon(Icons.email, color: Colors.white);
+      _hintText = ENTER_EMAIL;
+    } else if (widget.isPassword) {
+      _textTitle = PASS;
+      _iconField = const Icon(Icons.lock, color: Colors.white);
+      _hintText = ENTER_PASS;
+    }
+    controller = TextEditingController();
+    controller.addListener(() {
+      setState(() {});
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    String textTitle = '';
-    String hintText = '';
-    Icon iconField = const Icon(Icons.error);
-    if (isEmail) {
-      textTitle = EMAIL;
-      iconField = const Icon(Icons.email, color: Colors.white);
-      hintText = ENTER_EMAIL;
-    } else if (isPassword) {
-      textTitle = PASS;
-      iconField = const Icon(Icons.lock, color: Colors.white);
-      hintText = ENTER_PASS;
-    }
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          textTitle,
+          _textTitle,
           style: LabelStyle,
         ),
         const SizedBox(height: 10.0),
@@ -38,10 +60,15 @@ class InputTextField extends StatelessWidget {
           decoration: BoxDecorationStyle,
           height: 60.0,
           child: TextField(
-            keyboardType: isEmail == true
+            onChanged: (value) {
+              widget.onChanged(value);
+            },
+            onSubmitted: widget.onSubmitted,
+            controller: controller,
+            keyboardType: widget.isEmail == true
                 ? TextInputType.emailAddress
                 : TextInputType.none,
-            obscureText: isPassword == false ? true : false,
+            obscureText: widget.isPassword == true ? true : false,
             style: const TextStyle(
               color: Colors.white,
               fontFamily: 'OpenSans',
@@ -49,8 +76,8 @@ class InputTextField extends StatelessWidget {
             decoration: InputDecoration(
               border: InputBorder.none,
               contentPadding: const EdgeInsets.only(top: 14.0),
-              prefixIcon: iconField,
-              hintText: hintText,
+              prefixIcon: _iconField,
+              hintText: _hintText,
               hintStyle: HintTextStyle,
             ),
           ),

@@ -11,11 +11,17 @@ class NetworkApiService extends BaseApiServices {
   Future getPostApiResponse(String url, dynamic data, dynamic headers) async {
     dynamic responseJson;
     try {
-      final response =
-          await http.post(Uri.parse(url), body: data, headers: headers).timeout(
-                const Duration(seconds: 10),
-              );
+      final response = await http
+          .post(
+            Uri.parse(url),
+            body: data,
+            headers: headers,
+          )
+          .timeout(
+            const Duration(seconds: 10),
+          );
       responseJson = returnResponse(response);
+      log(responseJson);
     } on SocketException {
       log("No Internet Connection");
       throw FetchDataException('No Internet Connection');
@@ -27,6 +33,7 @@ class NetworkApiService extends BaseApiServices {
     switch (response.statusCode) {
       case 200:
         final responseJson = jsonDecode(response.body);
+        log("200" + responseJson);
         return responseJson;
       case 400:
         log("error 400: ${response.body}");

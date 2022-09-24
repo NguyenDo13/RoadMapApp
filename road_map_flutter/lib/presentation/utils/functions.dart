@@ -1,11 +1,10 @@
 // ignore_for_file: non_constant_identifier_names, constant_identifier_names
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:road_map_flutter/presentation/UIData/app_content.dart';
 import 'package:road_map_flutter/presentation/UIData/images_animations.dart';
+import 'package:road_map_flutter/presentation/pages/login/login_screen.dart';
 import 'package:road_map_flutter/presentation/widgets/alert_dialog.dart';
 import 'package:road_map_flutter/data/models/road_map.dart';
 import 'package:road_map_flutter/data/models/step_road_map.dart';
@@ -76,7 +75,6 @@ List<StepRoadMap> getListStepRoadMap(List<RoadMap> listRoadMap) {
 
 Future<List<RoadMap>> loadData() async {
   final response = await rootBundle.loadString(JSON_DATA);
-  log(response);
   List<RoadMap> roadMap = roadMapFromJson(response);
 
   if (roadMap.isNotEmpty) {
@@ -84,4 +82,13 @@ Future<List<RoadMap>> loadData() async {
   } else {
     return [];
   }
+}
+
+void navigateToLogin(context) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => const LoginScreen(),
+    ),
+  );
 }

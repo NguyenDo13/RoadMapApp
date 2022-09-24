@@ -4,12 +4,7 @@ abstract class StepperState {
   const StepperState();
 }
 
-class StepperLoading extends StepperState {
-  final bool isLoading;
-  const StepperLoading({
-    required this.isLoading,
-  });
-}
+class StepperLoading extends StepperState {}
 
 class StepperLoaded extends StepperState {
   final List<StepRoadMap> stepperRoadMap;

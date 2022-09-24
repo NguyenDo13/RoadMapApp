@@ -10,10 +10,8 @@ abstract class StepperEvent extends Equatable {
 }
 
 class LoadStepperEvent extends StepperEvent {
-  final List<StepRoadMap> listStepRoadMap;
   final int currentIndex;
   const LoadStepperEvent({
-    required this.listStepRoadMap,
     required this.currentIndex,
   });
 }

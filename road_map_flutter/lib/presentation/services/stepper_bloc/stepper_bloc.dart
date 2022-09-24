@@ -1,10 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:road_map_flutter/presentation/services/stepper_bloc/stepper_event.dart';
 import 'package:road_map_flutter/presentation/services/stepper_bloc/stepper_state.dart';
 import 'package:road_map_flutter/presentation/utils/functions.dart';
 
 class StepperBloc extends Bloc<StepperEvent, StepperState> {
-  StepperBloc() : super(const StepperLoading(isLoading: false)) {
+  StepperBloc() : super(StepperLoading()) {
     on<LoadStepperEvent>(_loadStepper);
     on<StepCancleEvent>(_cancleStep);
     on<StepContinueEvent>(_continueStep);
@@ -12,17 +14,21 @@ class StepperBloc extends Bloc<StepperEvent, StepperState> {
   }
 
   Future<void> _loadStepper(
-      LoadStepperEvent event, Emitter<StepperState> emit) async {
-    emit(const StepperLoading(isLoading: true));
+    LoadStepperEvent event,
+    Emitter<StepperState> emit,
+  ) async {
+    emit(StepperLoading());
     final roadMaps = await loadData();
     final stepperRoadMap = getListStepRoadMap(roadMaps);
-    emit(const StepperLoading(isLoading: false));
-    emit(
-      StepperLoaded(
-        currentIndex: event.currentIndex,
-        stepperRoadMap: stepperRoadMap,
-      ),
-    );
+    
+    if (stepperRoadMap.isNotEmpty) {
+      emit(
+        StepperLoaded(
+          currentIndex: event.currentIndex,
+          stepperRoadMap: stepperRoadMap,
+        ),
+      );
+    }
   }
 
   void _cancleStep(StepCancleEvent event, Emitter<StepperState> emit) {

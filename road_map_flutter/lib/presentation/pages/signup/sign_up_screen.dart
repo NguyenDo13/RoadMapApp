@@ -7,6 +7,7 @@ import 'package:road_map_flutter/presentation/UIData/app_content.dart';
 import 'package:road_map_flutter/presentation/UIData/images_animations.dart';
 import 'package:road_map_flutter/presentation/UIData/style.dart';
 
+
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
 
@@ -54,11 +55,17 @@ class SignUpScreen extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 20.0),
-                      const InputTextField(isEmail: true),
+                      InputTextField(isEmail: true, onChanged: (email) {}),
                       const SizedBox(height: 20.0),
-                      const InputTextField(isPassword: true),
+                      InputTextField(
+                        isPassword: true,
+                        onChanged: (pass) {},
+                      ),
                       const SizedBox(height: 10.0),
-                      const ButtonRoundWhite(textButton: TITLE_SIGNUP),
+                      ButtonRoundWhite(
+                        textButton: TITLE_SIGNUP,
+                        press: () {      },
+                      ),
                       _buildSignupBtn(context),
                     ],
                   ),

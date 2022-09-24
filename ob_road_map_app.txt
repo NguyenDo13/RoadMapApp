@@ -1,0 +1,5 @@
+Flutter RoadMap:
+ # Object:
+	- User: id_user, email, passwork, gender, phone_number, avatar
+	- Steps: id_user, currentStep, list_finish_topics ([int]) 
+	

@@ -1,5 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:road_map_flutter/presentation/services/login_bloc/login_bloc.dart';
+import 'package:road_map_flutter/presentation/services/login_bloc/login_event.dart';
+import 'package:road_map_flutter/presentation/services/login_bloc/login_state.dart';
 import 'package:road_map_flutter/presentation/widgets/button_round_white.dart';
 import 'package:road_map_flutter/presentation/widgets/input_text_field.dart';
 import 'package:road_map_flutter/presentation/UIData/app_content.dart';
@@ -17,60 +23,133 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool _rememberMe = false;
+  String _messageEmail = "";
+  String _messagePassword = "";
+  String _email = "";
+  String _password = "";
+  bool isDataValid = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: AnnotatedRegion<SystemUiOverlayStyle>(
-        value: SystemUiOverlayStyle.light,
-        child: InkWell(
-          onTap: () => FocusScope.of(context).unfocus(),
-          child: Stack(
-            children: <Widget>[
-              Container(
-                height: double.infinity,
-                width: double.infinity,
-                decoration: DecorationBGLogin,
-              ),
-              SizedBox(
-                height: double.infinity,
-                child: SingleChildScrollView(
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 40.0,
-                    vertical: 120.0,
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      const Text(
-                        TITLE_SIGNIN,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontFamily: 'OpenSans',
-                          fontSize: 30.0,
-                          fontWeight: FontWeight.bold,
+      body: BlocBuilder<LoginBloc, LoginState>(
+        builder: (context, state) {
+          if (state is LoginInitial) {
+            return AnnotatedRegion<SystemUiOverlayStyle>(
+              value: SystemUiOverlayStyle.light,
+              child: InkWell(
+                onTap: () {},
+                child: Stack(
+                  children: <Widget>[
+                    Container(
+                      height: double.infinity,
+                      width: double.infinity,
+                      decoration: DecorationBGLogin,
+                    ),
+                    SizedBox(
+                      height: double.infinity,
+                      child: SingleChildScrollView(
+                        physics: const AlwaysScrollableScrollPhysics(),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 40.0,
+                          vertical: 120.0,
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            const Text(
+                              TITLE_SIGNIN,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontFamily: 'OpenSans',
+                                fontSize: 30.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(height: 30.0),
+                            InputTextField(
+                              isEmail: true,
+                              onChanged: (email) {
+                                setState(() {
+                                  _email = email;
+                                });
+                                _formatEmail(email);
+                              },
+                            ),
+                            Visibility(
+                              visible: _messageEmail.isNotEmpty,
+                              child: Text(_messageEmail),
+                            ),
+                            const SizedBox(height: 30.0),
+                            InputTextField(
+                              isPassword: true,
+                              onChanged: (password) {
+                                setState(() {
+                                  _password = password;
+                                });
+                                _formatPassword(password);
+                              },
+                            ),
+                            Visibility(
+                              visible: _messagePassword.isNotEmpty ||
+                                  _messagePassword.length >= 6,
+                              child: Text(_messagePassword),
+                            ),
+                            _buildForgotPasswordBtn(),
+                            _buildRememberMeCheckbox(),
+                            ButtonRoundWhite(
+                              textButton: TITLE_LOGIN,
+                              press: () {
+                                if (isDataValid) {
+                                  context.read<LoginBloc>().add(
+                                        SimplyLoginEvent(
+                                          email: _email,
+                                          password: _password,
+                                        ),
+                                      );
+                                }
+                              },
+                            ),
+                            _buildSignInWithText(),
+                            _buildSocialBtnRow(),
+                            _buildSignupBtn(),
+                          ],
                         ),
                       ),
-                      const SizedBox(height: 30.0),
-                      const InputTextField(isEmail: true),
-                      const SizedBox(height: 30.0),
-                      const InputTextField(isPassword: true),
-                      _buildForgotPasswordBtn(),
-                      _buildRememberMeCheckbox(),
-                      const ButtonRoundWhite(textButton: TITLE_LOGIN),
-                      _buildSignInWithText(),
-                      _buildSocialBtnRow(),
-                      _buildSignupBtn(),
-                    ],
-                  ),
+                    )
+                  ],
                 ),
-              )
-            ],
-          ),
-        ),
+              ),
+            );
+          }
+          return const Text('some thing Wrong!');
+        },
       ),
     );
+  }
+
+  _formatPassword(String password) {
+    setState(() {
+      if (password.isEmpty || password.length < 6) {
+        isDataValid = false;
+        _messagePassword = 'password must be at least 6 characters';
+      } else {
+        isDataValid = true;
+        _messagePassword = '';
+      }
+    });
+  }
+
+  _formatEmail(String email) {
+    setState(() {
+      if (email.isEmpty) {
+        isDataValid = false;
+        _messageEmail = 'password must be at least 6 characters';
+      } else {
+        isDataValid = true;
+        _messageEmail = '';
+      }
+    });
   }
 
   Widget _buildForgotPasswordBtn() {

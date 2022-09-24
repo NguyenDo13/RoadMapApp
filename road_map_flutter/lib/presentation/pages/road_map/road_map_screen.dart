@@ -1,10 +1,7 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:road_map_flutter/presentation/widgets/list_steps.dart';
-import 'package:road_map_flutter/presentation/pages/login/login_screen.dart';
 import 'package:road_map_flutter/presentation/UIData/app_content.dart';
 import 'package:road_map_flutter/presentation/UIData/colors.dart';
 import 'package:road_map_flutter/presentation/services/stepper_bloc/stepper_bloc.dart';
@@ -12,6 +9,8 @@ import 'package:road_map_flutter/presentation/services/stepper_bloc/stepper_even
 import 'package:road_map_flutter/presentation/services/stepper_bloc/stepper_state.dart';
 import 'package:road_map_flutter/presentation/utils/functions.dart';
 import 'package:road_map_flutter/presentation/UIData/images_animations.dart';
+import 'package:road_map_flutter/presentation/widgets/loading_widget.dart';
+import 'package:road_map_flutter/presentation/widgets/state_login_widget.dart';
 
 class RoadMapScreen extends StatefulWidget {
   const RoadMapScreen({super.key});
@@ -62,38 +61,10 @@ class _RoadMapScreenState extends State<RoadMapScreen> {
           ),
         ),
       ),
-      actions: [
-        InkWell(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const LoginScreen(),
-              ),
-            );
-          },
-          child: Center(
-            child: Row(
-              children: [
-                SizedBox(
-                  height: 58,
-                  child: Lottie.network(
-                    'https://assets8.lottiefiles.com/private_files/lf30_bcVsEA.json',
-                  ),
-                ),
-                const Text(
-                  TITLE_LOGIN,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-        const SizedBox(
-          width: 16,
+      actions: const [
+        StateLoginWidget(),
+        SizedBox(
+          width: 12,
         ),
       ],
     );
@@ -103,33 +74,49 @@ class _RoadMapScreenState extends State<RoadMapScreen> {
     return BlocBuilder<StepperBloc, StepperState>(
       builder: (context, state) {
         if (state is StepperLoading) {
-          return Center(
-            child: SizedBox(
-              height: 100,
-              child: Lottie.asset(JSON_SPINNER),
-            ),
-          );
+          return const LoadingWidget();
         }
+
         if (state is StepperLoaded) {
           return Stepper(
             currentStep: state.currentIndex,
-            onStepCancel: () {
-              context.read<StepperBloc>().add(StepCancleEvent(currentIndex: state.currentIndex));
-            },
-            onStepContinue: () {
-              context.read<StepperBloc>().add(StepContinueEvent(currentIndex: state.currentIndex));
-            },
-            onStepTapped: (int stepIndex) {
-              context.read<StepperBloc>().add(
-                    StepTapEvent(indexStep: stepIndex),
-                  );
-            },
+            onStepCancel: () => _onStepCancel(state.currentIndex),
+            onStepContinue: () => _onStepContinue(state.currentIndex),
+            onStepTapped: (int stepIndex) => _onStepTapped(stepIndex),
             steps: buildSteps(state.stepperRoadMap),
           );
-        } else {
-          return const Text('no have data!');
         }
+        
+        return const Center(
+            child: Text(
+          'Some thing Wrong! 😭😭',
+          style: TextStyle(color: Colors.red),
+        ));
       },
     );
+  }
+
+  _onStepCancel(index) {
+    context.read<StepperBloc>().add(
+          StepCancleEvent(
+            currentIndex: index,
+          ),
+        );
+  }
+
+  _onStepContinue(index) {
+    context.read<StepperBloc>().add(
+          StepContinueEvent(
+            currentIndex: index,
+          ),
+        );
+  }
+
+  _onStepTapped(index) {
+    context.read<StepperBloc>().add(
+          StepTapEvent(
+            indexStep: index,
+          ),
+        );
   }
 }
