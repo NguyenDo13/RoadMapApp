@@ -14,6 +14,9 @@ const EMAIL = "Email";
 const PASS = "Password";
 const ENTER_EMAIL = 'Enter your Email';
 const ENTER_PASS = 'Enter your Password';
+const MESSAGE_EMAIL = 'Email is required!';
+const MESSAGE_PASSWORD = 'Password is required!';
+const MESSAGE_PASSWORD_6 = 'Must be more than 5 characters!';
 
 //* ROADMAP
 const TITLE_ROADMAP = 'Flutter Road Map';

@@ -13,6 +13,7 @@ import 'package:road_map_flutter/presentation/UIData/colors.dart';
 import 'package:road_map_flutter/presentation/UIData/style.dart';
 import 'package:road_map_flutter/presentation/pages/signup/sign_up_screen.dart';
 import 'package:road_map_flutter/presentation/UIData/images_animations.dart';
+import 'package:road_map_flutter/presentation/widgets/warning_message.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -23,11 +24,11 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool _rememberMe = false;
-  String _messageEmail = "";
-  String _messagePassword = "";
   String _email = "";
   String _password = "";
-  bool isDataValid = false;
+  bool _isValidEmail = true;
+  bool _isValidPassword = true;
+  String _messagePassword = "";
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            const SizedBox(height: 30.0),
+                            const SizedBox(height: 20.0),
                             InputTextField(
                               isEmail: true,
                               onChanged: (email) {
@@ -76,11 +77,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                 _formatEmail(email);
                               },
                             ),
-                            Visibility(
-                              visible: _messageEmail.isNotEmpty,
-                              child: Text(_messageEmail),
+                            WarningMessage(
+                              isDataValid: _isValidEmail,
+                              message: MESSAGE_EMAIL,
                             ),
-                            const SizedBox(height: 30.0),
+                            const SizedBox(height: 20.0),
                             InputTextField(
                               isPassword: true,
                               onChanged: (password) {
@@ -90,17 +91,16 @@ class _LoginScreenState extends State<LoginScreen> {
                                 _formatPassword(password);
                               },
                             ),
-                            Visibility(
-                              visible: _messagePassword.isNotEmpty ||
-                                  _messagePassword.length >= 6,
-                              child: Text(_messagePassword),
+                            WarningMessage(
+                              isDataValid: _isValidPassword,
+                              message: _messagePassword,
                             ),
                             _buildForgotPasswordBtn(),
                             _buildRememberMeCheckbox(),
                             ButtonRoundWhite(
                               textButton: TITLE_LOGIN,
                               press: () {
-                                if (isDataValid) {
+                                if (_isValidPassword && _isValidEmail) {
                                   context.read<LoginBloc>().add(
                                         SimplyLoginEvent(
                                           email: _email,
@@ -130,12 +130,14 @@ class _LoginScreenState extends State<LoginScreen> {
 
   _formatPassword(String password) {
     setState(() {
-      if (password.isEmpty || password.length < 6) {
-        isDataValid = false;
-        _messagePassword = 'password must be at least 6 characters';
+      if (password.isEmpty) {
+        _isValidPassword = false;
+        _messagePassword = MESSAGE_PASSWORD;
+      } else if (password.length < 6) {
+        _isValidPassword = false;
+        _messagePassword = MESSAGE_PASSWORD_6;
       } else {
-        isDataValid = true;
-        _messagePassword = '';
+        _isValidPassword = true;
       }
     });
   }
@@ -143,11 +145,9 @@ class _LoginScreenState extends State<LoginScreen> {
   _formatEmail(String email) {
     setState(() {
       if (email.isEmpty) {
-        isDataValid = false;
-        _messageEmail = 'password must be at least 6 characters';
+        _isValidEmail = false;
       } else {
-        isDataValid = true;
-        _messageEmail = '';
+        _isValidEmail = true;
       }
     });
   }

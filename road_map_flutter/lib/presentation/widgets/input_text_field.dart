@@ -21,7 +21,7 @@ class InputTextField extends StatefulWidget {
 }
 
 class _InputTextFieldState extends State<InputTextField> {
-  late final TextEditingController controller;
+  late final TextEditingController _controller;
   late String _textTitle;
   late String _hintText;
   late Icon _iconField;
@@ -38,8 +38,8 @@ class _InputTextFieldState extends State<InputTextField> {
       _iconField = const Icon(Icons.lock, color: Colors.white);
       _hintText = ENTER_PASS;
     }
-    controller = TextEditingController();
-    controller.addListener(() {
+    _controller = TextEditingController();
+    _controller.addListener(() {
       setState(() {});
     });
     super.initState();
@@ -64,10 +64,10 @@ class _InputTextFieldState extends State<InputTextField> {
               widget.onChanged(value);
             },
             onSubmitted: widget.onSubmitted,
-            controller: controller,
+            controller: _controller,
             keyboardType: widget.isEmail == true
                 ? TextInputType.emailAddress
-                : TextInputType.none,
+                : TextInputType.multiline,
             obscureText: widget.isPassword == true ? true : false,
             style: const TextStyle(
               color: Colors.white,
