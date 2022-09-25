@@ -12,6 +12,8 @@ class SimplyLoginEvent extends LoginEvent {
   });
 }
 
+class LoginWithAccessToken extends LoginEvent {}
+
 class LoginGoogleEvent extends LoginEvent {}
 
 class LoginFacebookEvent extends LoginEvent {}

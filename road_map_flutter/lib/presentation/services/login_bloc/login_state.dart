@@ -1,11 +1,14 @@
 import 'package:road_map_flutter/data/models/auth_user.dart';
 
-abstract class LoginState{
+abstract class LoginState {
   const LoginState();
 }
 
 class LoginInitial extends LoginState {}
+
 class LoggedState extends LoginState {
-  LoggedState(AuthUser authUser);
+  final AuthUser authUser;
+  LoggedState(this.authUser);
 }
+
 class LogoutState extends LoginState {}

@@ -10,7 +10,6 @@ class ButtonRoundWhite extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: press,
-       
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 25.0),
         padding: const EdgeInsets.all(15.0),
